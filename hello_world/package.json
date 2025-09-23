@@ -1,0 +1,35 @@
+{
+  "name": "javascript-html-project",
+  "version": "1.0.0",
+  "description": "A modern JavaScript HTML project with development tools",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=8080 --host=localhost --open=/",
+    "dev": "live-server --port=8080 --host=localhost --open=/ --watch=.",
+    "lint": "eslint js/",
+    "lint:fix": "eslint js/ --fix",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "javascript",
+    "html",
+    "css",
+    "frontend",
+    "web"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "live-server": "^1.2.2",
+    "prettier": "^3.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "dependencies": {
+    "konva": "^10.0.2"
+  }
+}
