@@ -1,59 +1,31 @@
 # CSVAD25 - Computational Systems for Visual Art and Design
-A course on using computers to help artists make art
 
+This repository contains creative coding projects using JavaScript and p5.js for visual art and design.
 
-## Course Overview
-
-This repository contains projects and assignments for CSVAD25
-
-## 📁 Project Structure
+## 📁 Projects
 
 ```
 CSVAD25/
-├── hello_world/                 # Face drawing project with Konva.js
-│   ├── css/
-│   ├── js/
-│   └── index.html
-├── color/                       # Color theory and manipulation projects
-├── layout/                      # Layout and composition experiments
-├── .gitignore                   # Git ignore rules
-└── README.md                    # This file
+├── helloworldp5/               # Basic p5.js sketch
+└── colorp5/                    # p5.js color projects
+    ├── ColorNodes/             # Node-based color system
+    ├── ColorPartner/           # Interactive color generation (HSB)
+    └── ColorPartnerLab/        # Interactive color generation (CIE LAB)
 ```
 
-## 🚀 Projects
+## 🎨 Project Details
 
-### Hello World - Interactive Face Drawing
-**Location**: `/hello_world/`
+### Hello World p5.js
+**Location**: `/helloworldp5/`
+- Basic p5.js setup and sketch template
 
-A JavaScript project demonstrating canvas-based graphics using Konva.js. Features multiple face drawing variations with different geometric styles and interactive elements.
+### p5.js Color Projects
+**Location**: `/colorp5/`
+- **ColorNodes**: Interactive color node system for exploring color relationships
+- **ColorPartner**: Color variation generator using HSB color space
+- **ColorPartnerLab**: Color variation generator using CIE L*a*b* color space for perceptually uniform color mixing
 
-**Key Features**:
-- Three distinct face drawing algorithms
-- Geometric and organic shape combinations
-- Interactive canvas rendering
-- Live development server setup
-
-**Technologies**: HTML5, CSS3, JavaScript ES6+, Konva.js
-
-### Color Projects
-**Location**: `/color/`
-
-Experiments with color theory, manipulation, and visual effects.
-
-### Layout Projects  
-**Location**: `/layout/`
-
-Explorations in visual composition, grid systems, and responsive design patterns.
-
-## 🛠️ Development Setup
-
-### Prerequisites
-- Node.js (version 14 or higher)
-- npm (comes with Node.js)
-- Modern web browser
-- Code editor (VS Code recommended)
-
-### Getting Started
+## � Getting Started
 
 1. **Clone the repository**:
    ```bash
@@ -61,75 +33,15 @@ Explorations in visual composition, grid systems, and responsive design patterns
    cd CSVAD25
    ```
 
-2. **Navigate to a specific project**:
-   ```bash
-   cd hello_world  # or color, layout
-   ```
+2. **Open any project**:
+   - All projects can be opened directly in a web browser
 
-3. **Install dependencies** (if the project has a package.json):
-   ```bash
-   npm install
-   ```
+## 🔧 Technologies
 
-4. **Start development server**:
-   ```bash
-   npm start
-   ```
-
-## 📝 Course Goals
-
-- **Creative Expression**: Using code as a medium for artistic expression
-- **Technical Skills**: Modern web development practices and tools
-- **Visual Design**: Understanding composition, color, and interactive design
-- **Problem Solving**: Algorithmic thinking applied to visual problems
-- **Experimentation**: Iterative development and creative exploration
-
-## 🎯 Learning Outcomes
-
-By the end of this course, students will be able to:
-- Create interactive visual experiences using web technologies
-- Apply programming concepts to solve visual design challenges
-- Understand the relationship between code structure and visual output
-- Develop a personal creative coding workflow
-- Critique and analyze digital art and interactive media
-
-## 🔧 Technologies Used
-
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Graphics**: Canvas API, Konva.js, SVG
-- **Development**: Node.js, npm, live-server
-- **Code Quality**: ESLint, Prettier
-- **Version Control**: Git, GitHub
-
-## 📚 Resources
-
-### Documentation
-- [MDN Web Docs](https://developer.mozilla.org/) - Web API references
-- [Konva.js Documentation](https://konvajs.org/) - 2D canvas library
-- [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) - Native canvas drawing
-
-### Inspiration
-- [OpenProcessing](https://openprocessing.org/) - Creative coding community
-- [Coding Train](https://thecodingtrain.com/) - Creative coding tutorials
-- [p5.js Examples](https://p5js.org/examples/) - Interactive graphics examples
-
-## 🤝 Contributing
-
-This is a course repository. For questions or suggestions:
-
-1. Create an issue for discussion
-2. Follow established code style (ESLint + Prettier)
-3. Document new features and experiments
-4. Share interesting discoveries and techniques
-
-## 📄 License
-
-This repository is for educational purposes. Individual projects may have different licensing terms.
-
-## 🎉 Getting Creative
-
-Remember: The best way to learn creative coding is through experimentation. Don't be afraid to break things, try new approaches, and push the boundaries of what's possible with code!
+- **JavaScript** - Core programming language  
+- **p5.js** - Creative coding library for graphics and interaction
+- **CIE L*a*b*** - Perceptually uniform color space for advanced color mixing
 
 ---
 
-**Happy Creative Coding!** ✨🎨💻
+**Creative Coding with JavaScript and p5.js** ✨
