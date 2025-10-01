@@ -3,6 +3,8 @@
 // extended from Rune Madsen's Color Scheme Complimentary Example :https://printingcode.runemadsen.com/examples/color/scheme_complementary/index.html
 
 let innerRadius = 100; // hole size
+let outerRadius = 200; // hole size
+
 let steps = 360/15; // resolution
 
 function setup() {
