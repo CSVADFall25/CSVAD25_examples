@@ -2,9 +2,7 @@
 
 A collection of p5.js projects exploring color theory, color relationships, and interactive color manipulation techniques.
 
-## Projects Overview
-
-
+## Basic Examples
 
 #### **HSVExplorer**
 Visual exploration of HSV/HSB color space:
