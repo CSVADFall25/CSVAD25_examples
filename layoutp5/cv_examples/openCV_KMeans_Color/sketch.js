@@ -36,7 +36,7 @@ function segmentImage() {
 
   // Convert RGBA to RGB
   let rgb = new cv.Mat();
-  //v.cvtColor(src, rgb, cv.COLOR_RGBA2RGB);
+  cv.cvtColor(src, rgb, cv.COLOR_RGBA2RGB);
 
   let rows = rgb.rows;
   let cols = rgb.cols;
@@ -73,7 +73,7 @@ function segmentImage() {
 
   // Convert back to RGBA
   let dst = new cv.Mat();
- // cv.cvtColor(clustered, dst, cv.COLOR_RGB2RGBA);
+  cv.cvtColor(clustered, dst, cv.COLOR_RGB2RGBA);
 
   // Convert to p5 Image
   outImg = createImage(cols, rows);
