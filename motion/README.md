@@ -1,8 +1,8 @@
 # Motion
 
-This folder contains interactive p5.js sketches and examples related to motion, animation, and vector mathematics. Each subfolder demonstrates a different concept or technique for animating objects, paths, and behaviors in creative coding.
+This folder contains interactive p5.js sketches and examples related to motion, animation, and vector mathematics.
 
-## Subfolders & Examples
+##Examples
 
 - **basic_vectors_ease/**: Demonstrates vector-based motion and easing functions for smooth animation.
 - **basic_vectors_ease_position/**: Shows how easing can be applied as a function of position.
@@ -23,8 +23,6 @@ This folder contains interactive p5.js sketches and examples related to motion, 
 
 ## Credits
 
-- Inspired by "The Nature of Code" by Daniel Shiffman
-- Developed for CSVAD25 course by pixelmaid
+- Some examples inspired by "The Nature of Code" by Daniel Shiffman
+- Developed for CSVAD25 course
 
----
-Feel free to explore, modify, and use these examples for learning or creative projects!
