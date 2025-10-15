@@ -9,6 +9,8 @@ This folder contains interactive p5.js sketches and examples related to motion, 
 - **frame_animation/**: Example of frame-by-frame animation using PNG sequences.
 - **motion_path/**: Animates an object along a custom path using interpolation.
 - **oriented_motion_path/**: Animates an object along a path, rotating it to match the direction of motion.
+ - **forces_animation/**: Single-butterfly forces example using PNG frame animation.
+ - **butterfly_particles/**: A particle system of multiple ButterflyMover objects (includes `index.html`).
 
 ## How to Run
 

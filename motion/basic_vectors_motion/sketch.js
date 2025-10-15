@@ -1,5 +1,5 @@
 // Adapted from "The Nature of Code" by Daniel Shiffman
-// Bouncing object with PNG sequence animation using vectors
+// Animated sequence moving across the screen with position and velocity vectors
 // https://natureofcode.com/vectors/#the-point-of-vectors
 
 let position;
@@ -36,17 +36,11 @@ function draw() {
   // Update position based on velocity
   position.add(velocity);
 
-  // Bounce off edges
+  // return to start if off screen
   if (position.x > width || position.x < 0) {
     position.x = 100;
   }
   
-
-  // Calculate direction vector and angle
-
-  let dx = position.x-prevPosition.x;
-  let dy = position.y - prevPosition.y;
-  let angle = atan2(dy, dx);
 
 
   // Advance animation frame
@@ -58,13 +52,14 @@ function draw() {
   // Draw current image at position
   let img = frames[currentIndex];
   if (img) {
+    //resize to fit image within canvas size
     const maxSize = 60; // max displayed width or height
     let ratio = min(maxSize / img.width, maxSize / img.height);
     let w = img.width * ratio;
     let h = img.height * ratio;
     push();
     translate(position.x, position.y);
-    rotate(angle + PI/2); // rotate to align with path direction
+    rotate(PI/2); // rotate to align with path direction
     image(img, 0, 0,w,h);
     pop();
   }
