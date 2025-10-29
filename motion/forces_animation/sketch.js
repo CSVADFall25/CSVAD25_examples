@@ -57,41 +57,4 @@ let img = frames[currentIndex];
 
   butterflyMover.checkEdges();
 
-  /*prevPosition = position.copy();
-  // Update position based on velocity
-  position.add(velocity);
-
-  // Bounce off edges
-  if (position.x > width || position.x < 0) {
-    velocity.x *= -1;
-  }
-  if (position.y > height || position.y < 0) {
-    velocity.y *= -1;
-  }
-
-  // Calculate direction vector and angle
-  let directionVector = p5.Vector.sub(position, prevPosition);
-  directionVector.normalize();
-  let angle = directionVector.heading();
-
-
-  // Advance animation frame
-  if (millis() - lastChange >= frameInterval) {
-    lastChange = millis();
-    currentIndex = (currentIndex + 1) % NUM_FRAMES;
-  }
-
-  // Draw current image at position
-  let img = frames[currentIndex];
-  if (img) {
-    const maxSize = 60; // max displayed width or height
-    let ratio = min(maxSize / img.width, maxSize / img.height);
-    let w = img.width * ratio;
-    let h = img.height * ratio;
-    push();
-    translate(position.x, position.y);
-    rotate(angle + PI/2); // rotate to align with path direction
-    image(img, 0, 0,w,h);
-    pop();
-  }*/
 }

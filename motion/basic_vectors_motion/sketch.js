@@ -25,7 +25,7 @@ function setup() {
   createCanvas(640, 240);
   position = createVector(100, 100);
   prevPosition = createVector(position.x, position.y);
-  velocity = createVector(2, 0);
+  velocity = createVector(2, 2);
   imageMode(CENTER);
 }
 
