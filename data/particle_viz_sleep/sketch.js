@@ -122,8 +122,8 @@ class Circle {
     this.hue = hue;
     this.sleepHours = sleepHours;
     // Calculate deceleration factor: less sleep = more slowdown
-    this.decelerationFactor = map(sleepHours, 0, 10, 0.25, 0.75);
-    this.decelerationFactor = constrain(this.decelerationFactor, 0.5, 0.999);
+    this.decelerationFactor = map(sleepHours, 0, 10, 0.75, 0.999);
+    this.decelerationFactor = constrain(this.decelerationFactor, 0.75, 0.999);
   }
 
   applyForce(f) {

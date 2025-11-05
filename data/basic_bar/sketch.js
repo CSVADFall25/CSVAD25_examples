@@ -15,11 +15,10 @@ function setup() {
   tooltipGraphics = createGraphics(2000, 400);
   // draw() will run continuously to support hover interaction
 
-  // Extract first 50 values data from CSV
+  // Extract first 100 values data from CSV
   for (let r = 0; r < 100; r++) {
     labels.push(formatDate(table.getString(r, 'startDate')));
     distance.push(float(table.getString(r, 'totalDistance_miles')));
-    console.log(distance[r]);
     energy.push(float(table.getString(r, 'totalEnergyBurned_cal')));
     duration.push(float(table.getString(r, 'duration_minutes')));
   }
