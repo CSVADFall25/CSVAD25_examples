@@ -6,6 +6,11 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+#raw data files
+data/data_parsing_scripts/raw_data/*
+# processed data files
+data/data_parsing_scripts/cleaned_data/emails.csv   
+
 # Runtime data
 pids
 *.pid
