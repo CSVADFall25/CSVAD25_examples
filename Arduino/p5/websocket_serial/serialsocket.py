@@ -2,11 +2,11 @@ import serial
 import asyncio
 import websockets
 
-SERIAL_PORT = '/dev/cu.usbmodem101'  # Adjust for your system
+SERIAL_PORT = '/dev/cu.usbmodem1101'  # Adjust for your system
 BAUD_RATE = 9600
 
 async def serial_to_websocket(websocket):
-    #ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
+    ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
     #print(f"Connected to serial port: {SERIAL_PORT}")
 
     try:
