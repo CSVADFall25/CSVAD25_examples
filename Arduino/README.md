@@ -7,13 +7,29 @@ This folder contains two ways to connect Arduino data to creative-coding sketche
 
 Use whichever path best fits your project.
 
+## Quick start
+
+**For Processing:**
+1. Upload StandardFirmata to Arduino (Arduino IDE: File → Examples → Firmata → StandardFirmata)
+2. Open a `.pde` sketch from `Processing/` folder
+3. Run the sketch
+
+**For p5.js + WebSocket:**
+1. Install Python dependencies: `pip3 install pyserial websockets`
+2. Configure serial port in `p5/websocket_serial/serialsocket.py`
+3. Run bridge: `python3 Arduino/p5/websocket_serial/serialsocket.py`
+4. Open `p5/websocket_serial/p5websocket/index.html` in browser
+
+---
+
 ## Folder structure
 
 - `Processing/`
-  - `arduino_firmata_analog_input/`
-  - `arduino_firmata_digital_input/`
-  - `arduino_firmata_analog_accel/`
-  - `arduino_firmata_distance_sensor/`
+  - `arduino_firmata_analog_input/` – Read analog pins (e.g., potentiometers, photoresistors)
+  - `arduino_firmata_digital_input/` – Read digital pins (e.g., buttons, switches)
+  - `arduino_firmata_analog_accel/` – Read accelerometer data via analog pins
+  - `arduino_firmata_distance_sensor/` – Read distance/ultrasonic sensor data
+  - `analogsensor_smoothing/` – Smoothing noisy analog sensor readings
   - Each contains a `.pde` sketch you can open in the Processing IDE. Upload StandardFirmata to your Arduino first.
 - `p5/websocket_serial/`
   - `serialsocket.py` – Python WebSocket ↔ Serial bridge
@@ -63,16 +79,11 @@ Edit `Arduino/p5/websocket_serial/serialsocket.py`:
 
 - Set the correct serial port:
   ```python
-  SERIAL_PORT = '/dev/cu.usbmodem101'  # Change to your Arduino port
+  SERIAL_PORT = '/dev/tty.usbmodem21201'  # Change to your Arduino port
   BAUD_RATE = 9600
   ```
-- Ensure the serial port is opened before the loop. Example:
-  ```python
-  ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
-  print(f"Connected to serial port: {SERIAL_PORT}")
-  ```
 
-Note: The file currently comments out the `serial.Serial(...)` line but still references `ser`. Make sure you uncomment and initialize it as shown above.
+The bridge includes basic filtering that only forwards numeric values (via `data.isdigit()`) to reduce noise. You can modify this logic in the `serial_to_websocket()` function to handle different data formats.
 
 ### Run the bridge
 From the repository root (or the `websocket_serial` folder):
@@ -114,15 +125,17 @@ The Python bridge will read each line and forward it to the p5.js client.
 ---
 
 ## Troubleshooting
-- “NameError: name 'ser' is not defined”
-  - Initialize `ser = serial.Serial(...)` at the top of `serialsocket.py` (see Configure the bridge).
-- Can’t find the serial port
-  - Unplug/replug the Arduino and check the port name. On macOS it’s usually `/dev/cu.usbmodem...`.
-- Browser can’t connect to ws://localhost:8765
+- Can't find the serial port
+  - Unplug/replug the Arduino and check the port name. On macOS it's usually `/dev/tty.usbmodem...` or `/dev/cu.usbmodem...`.
+  - List available ports with: `ls /dev/tty.*` or `ls /dev/cu.*`
+- Browser can't connect to ws://localhost:8765
   - Make sure `serialsocket.py` is running and not blocked by a firewall.
   - Confirm the address/port in `p5websocket/sketch.js` matches the Python server.
 - Garbage or no data
   - Match the Arduino `Serial.begin(9600)` to the Python `BAUD_RATE`.
+  - Check that the Arduino is printing values that pass the `data.isdigit()` filter in `serialsocket.py`.
+- Connection errors or "device busy"
+  - Close the Arduino IDE Serial Monitor before running `serialsocket.py` (both can't use the port simultaneously).
 
 ---
 

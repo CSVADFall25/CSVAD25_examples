@@ -2,7 +2,7 @@ import serial
 import asyncio
 import websockets
 
-SERIAL_PORT = '/dev/cu.usbmodem1101'  # Adjust for your system
+SERIAL_PORT = '/dev/tty.usbmodem21201'  # Adjust for your system
 BAUD_RATE = 9600
 
 async def serial_to_websocket(websocket):
@@ -13,9 +13,12 @@ async def serial_to_websocket(websocket):
         while True:
             # Read from serial and send to WebSocket
             if ser.in_waiting > 0:
-                data = ser.readline().decode('utf-8').strip()
-                await websocket.send(data)
-                print(f"Sent to P5.js: {data}")
+                 data = ser.readline().decode('utf-8').strip()
+                 if data.isdigit():
+                     value = int(data)
+                     print("Received:", value)
+                     await websocket.send(data)
+                     print(f"Sent to P5.js: {data}")
 
             # Receive from WebSocket and send to serial
             try:
