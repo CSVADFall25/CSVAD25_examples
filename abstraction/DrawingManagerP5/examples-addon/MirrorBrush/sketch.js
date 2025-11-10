@@ -9,7 +9,7 @@ function setup() {
   background(255);
   
   // Initialize the drawing manager
-  initDrawingManager();
+  initDynamicBrushes();
   
   // Draw a center line to show the mirror axis
   stroke(200);
@@ -23,15 +23,15 @@ function draw() {
 
 function mousePressed() {
   // Create the main shape (blue)
-  dmStroke(0, 100, 200);
-  dmStrokeWeight(2);
-  dmNoFill();
-  currentShape = dmAddShape();
+  dbStroke(0, 100, 200);
+  dbStrokeWeight(2);
+  dbNoFill();
+  currentShape = dbAddShape();
   currentShape.addVertex(mouseX, mouseY);
   
   // Create the mirrored shape (red)
-  dmStroke(200, 50, 50);
-  mirrorShape = dmAddShape();
+  dbStroke(200, 50, 50);
+  mirrorShape = dbAddShape();
   
   // Set up mirror transformation
   mirrorShape.pushMatrix();
@@ -62,12 +62,12 @@ function mouseReleased() {
 function keyPressed() {
   if (key === 'c' || key === 'C') {
     // Clear and redraw center line
-    dmClear();
+    dbClear();
     stroke(200);
     strokeWeight(1);
     line(width/2, 0, width/2, height);
   } else if (key === ' ') {
     // Save as SVG (requires p5.svg library)
-    dmSaveSVG();
+    dbSaveSVG();
   }
 }

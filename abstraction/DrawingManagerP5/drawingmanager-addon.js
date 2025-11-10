@@ -1,9 +1,9 @@
 /**
- * DrawingManager p5.js Addon
+ * DynamicBrushes p5.js Addon
  * A drawing abstraction library that extends p5.prototype
  * 
  * This version integrates directly with p5.js, extending the prototype
- * to add DrawingManager functionality as native p5 methods.
+ * to add DynamicBrushes functionality as native p5 methods.
  * 
  * @version 1.0.0
  * @author Ported from Processing version
@@ -129,15 +129,15 @@
     
     renderWithTransforms(p) {
       // Apply pending transformations from the stack
-      if (p._dmObjects) {
+      if (p._dbObjects) {
         p.push();
-        for (let i = 0; i < p._dmObjects.length; i++) {
-          if (p._dmObjects[i] instanceof PushTransform || 
-              p._dmObjects[i] instanceof PopTransform ||
-              p._dmObjects[i] instanceof Translate ||
-              p._dmObjects[i] instanceof Scale ||
-              p._dmObjects[i] instanceof Rotate) {
-            p._dmObjects[i].renderTransformation(p);
+        for (let i = 0; i < p._dbObjects.length; i++) {
+          if (p._dbObjects[i] instanceof PushTransform || 
+              p._dbObjects[i] instanceof PopTransform ||
+              p._dbObjects[i] instanceof Translate ||
+              p._dbObjects[i] instanceof Scale ||
+              p._dbObjects[i] instanceof Rotate) {
+            p._dbObjects[i].renderTransformation(p);
           }
         }
         this.renderTransformation(p);
@@ -183,15 +183,15 @@
     
     renderWithTransforms(p) {
       // Apply pending transformations from the stack
-      if (p._dmObjects) {
+      if (p._dbObjects) {
         p.push();
-        for (let i = 0; i < p._dmObjects.length; i++) {
-          if (p._dmObjects[i] instanceof PushTransform || 
-              p._dmObjects[i] instanceof PopTransform ||
-              p._dmObjects[i] instanceof Translate ||
-              p._dmObjects[i] instanceof Scale ||
-              p._dmObjects[i] instanceof Rotate) {
-            p._dmObjects[i].renderTransformation(p);
+        for (let i = 0; i < p._dbObjects.length; i++) {
+          if (p._dbObjects[i] instanceof PushTransform || 
+              p._dbObjects[i] instanceof PopTransform ||
+              p._dbObjects[i] instanceof Translate ||
+              p._dbObjects[i] instanceof Scale ||
+              p._dbObjects[i] instanceof Rotate) {
+            p._dbObjects[i].renderTransformation(p);
           }
         }
         this.renderTransformation(p);
@@ -237,15 +237,15 @@
     
     renderWithTransforms(p) {
       // Apply pending transformations from the stack
-      if (p._dmObjects) {
+      if (p._dbObjects) {
         p.push();
-        for (let i = 0; i < p._dmObjects.length; i++) {
-          if (p._dmObjects[i] instanceof PushTransform || 
-              p._dmObjects[i] instanceof PopTransform ||
-              p._dmObjects[i] instanceof Translate ||
-              p._dmObjects[i] instanceof Scale ||
-              p._dmObjects[i] instanceof Rotate) {
-            p._dmObjects[i].renderTransformation(p);
+        for (let i = 0; i < p._dbObjects.length; i++) {
+          if (p._dbObjects[i] instanceof PushTransform || 
+              p._dbObjects[i] instanceof PopTransform ||
+              p._dbObjects[i] instanceof Translate ||
+              p._dbObjects[i] instanceof Scale ||
+              p._dbObjects[i] instanceof Rotate) {
+            p._dbObjects[i].renderTransformation(p);
           }
         }
         this.renderTransformation(p);
@@ -293,15 +293,15 @@
     
     renderWithTransforms(p) {
       // Apply pending transformations from the stack
-      if (p._dmObjects) {
+      if (p._dbObjects) {
         p.push();
-        for (let i = 0; i < p._dmObjects.length; i++) {
-          if (p._dmObjects[i] instanceof PushTransform || 
-              p._dmObjects[i] instanceof PopTransform ||
-              p._dmObjects[i] instanceof Translate ||
-              p._dmObjects[i] instanceof Scale ||
-              p._dmObjects[i] instanceof Rotate) {
-            p._dmObjects[i].renderTransformation(p);
+        for (let i = 0; i < p._dbObjects.length; i++) {
+          if (p._dbObjects[i] instanceof PushTransform || 
+              p._dbObjects[i] instanceof PopTransform ||
+              p._dbObjects[i] instanceof Translate ||
+              p._dbObjects[i] instanceof Scale ||
+              p._dbObjects[i] instanceof Rotate) {
+            p._dbObjects[i].renderTransformation(p);
           }
         }
         this.renderTransformation(p);
@@ -520,133 +520,133 @@
     }
   }
 
-  // Extend p5.prototype with DrawingManager methods
-  p5.prototype.initDrawingManager = function() {
-    this._dmObjects = [];
-    this._dmStrokeColor = new DColor(0, 0, 0);
-    this._dmFillColor = new DColor(255, 255, 255);
-    this._dmStrokeWeight = 1;
-    this._dmNoFill = true;
-    this._dmNoStroke = false;
+  // Extend p5.prototype with DynamicBrushes methods
+  p5.prototype.initDynamicBrushes = function() {
+    this._dbObjects = [];
+    this._dbStrokeColor = new DColor(0, 0, 0);
+    this._dbFillColor = new DColor(255, 255, 255);
+    this._dbStrokeWeight = 1;
+    this._dbNoFill = true;
+    this._dbNoStroke = false;
   };
 
-  p5.prototype.dmFill = function(r, g, b, a = 255) {
-    if (!this._dmObjects) this.initDrawingManager();
-    this._dmFillColor = new DColor(r, g, b, a);
-    this._dmNoFill = false;
+  p5.prototype.dbFill = function(r, g, b, a = 255) {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    this._dbFillColor = new DColor(r, g, b, a);
+    this._dbNoFill = false;
     return this;
   };
 
-  p5.prototype.dmStroke = function(r, g, b, a = 255) {
-    if (!this._dmObjects) this.initDrawingManager();
-    this._dmStrokeColor = new DColor(r, g, b, a);
-    this._dmNoStroke = false;
+  p5.prototype.dbStroke = function(r, g, b, a = 255) {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    this._dbStrokeColor = new DColor(r, g, b, a);
+    this._dbNoStroke = false;
     return this;
   };
 
-  p5.prototype.dmNoStroke = function() {
-    if (!this._dmObjects) this.initDrawingManager();
-    this._dmNoStroke = true;
+  p5.prototype.dbNoStroke = function() {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    this._dbNoStroke = true;
     return this;
   };
 
-  p5.prototype.dmNoFill = function() {
-    if (!this._dmObjects) this.initDrawingManager();
-    this._dmNoFill = true;
+  p5.prototype.dbNoFill = function() {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    this._dbNoFill = true;
     return this;
   };
 
-  p5.prototype.dmStrokeWeight = function(weight) {
-    if (!this._dmObjects) this.initDrawingManager();
-    this._dmStrokeWeight = weight;
+  p5.prototype.dbStrokeWeight = function(weight) {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    this._dbStrokeWeight = weight;
     return this;
   };
 
-  p5.prototype.dmLine = function(x1, y1, x2, y2) {
-    if (!this._dmObjects) this.initDrawingManager();
-    let l = new DLine(this, x1, y1, x2, y2, this._dmFillColor, this._dmStrokeColor, this._dmNoFill, this._dmNoStroke);
-    this._dmObjects.push(l);
+  p5.prototype.dbLine = function(x1, y1, x2, y2) {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    let l = new DLine(this, x1, y1, x2, y2, this._dbFillColor, this._dbStrokeColor, this._dbNoFill, this._dbNoStroke);
+    this._dbObjects.push(l);
     return this;
   };
 
-  p5.prototype.dmAddShape = function() {
-    if (!this._dmObjects) this.initDrawingManager();
-    let dShape = new DShape(this, this._dmFillColor, this._dmStrokeColor, this._dmStrokeWeight, this._dmNoFill, this._dmNoStroke);
-    this._dmObjects.push(dShape);
+  p5.prototype.dbAddShape = function() {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    let dShape = new DShape(this, this._dbFillColor, this._dbStrokeColor, this._dbStrokeWeight, this._dbNoFill, this._dbNoStroke);
+    this._dbObjects.push(dShape);
     return dShape;
   };
 
-  p5.prototype.dmTriangle = function(x1, y1, x2, y2, x3, y3) {
-    if (!this._dmObjects) this.initDrawingManager();
-    let t = new DTriangle(this, x1, y1, x2, y2, x3, y3, this._dmFillColor, this._dmStrokeColor, this._dmNoFill, this._dmNoStroke);
-    this._dmObjects.push(t);
+  p5.prototype.dbTriangle = function(x1, y1, x2, y2, x3, y3) {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    let t = new DTriangle(this, x1, y1, x2, y2, x3, y3, this._dbFillColor, this._dbStrokeColor, this._dbNoFill, this._dbNoStroke);
+    this._dbObjects.push(t);
     return this;
   };
 
-  p5.prototype.dmEllipse = function(x, y, width, height) {
-    if (!this._dmObjects) this.initDrawingManager();
-    let e = new DEllipse(this, x, y, width, height, this._dmFillColor, this._dmStrokeColor, this._dmNoFill, this._dmNoStroke);
-    this._dmObjects.push(e);
+  p5.prototype.dbEllipse = function(x, y, width, height) {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    let e = new DEllipse(this, x, y, width, height, this._dbFillColor, this._dbStrokeColor, this._dbNoFill, this._dbNoStroke);
+    this._dbObjects.push(e);
     return this;
   };
 
-  p5.prototype.dmImage = function(img, x, y, width, height) {
-    if (!this._dmObjects) this.initDrawingManager();
+  p5.prototype.dbImage = function(img, x, y, width, height) {
+    if (!this._dbObjects) this.initDynamicBrushes();
     let i = new DImage(this, img, x, y, width, height);
-    this._dmObjects.push(i);
+    this._dbObjects.push(i);
     return this;
   };
 
-  p5.prototype.dmRect = function(x, y, width, height) {
-    if (!this._dmObjects) this.initDrawingManager();
-    let r = new DRect(this, x, y, width, height, this._dmFillColor, this._dmStrokeColor, this._dmNoFill, this._dmNoStroke);
-    this._dmObjects.push(r);
+  p5.prototype.dbRect = function(x, y, width, height) {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    let r = new DRect(this, x, y, width, height, this._dbFillColor, this._dbStrokeColor, this._dbNoFill, this._dbNoStroke);
+    this._dbObjects.push(r);
     return this;
   };
 
-  p5.prototype.dmPushMatrix = function() {
-    if (!this._dmObjects) this.initDrawingManager();
+  p5.prototype.dbPushMatrix = function() {
+    if (!this._dbObjects) this.initDynamicBrushes();
     let p = new PushTransform();
-    this._dmObjects.push(p);
+    this._dbObjects.push(p);
     return this;
   };
 
-  p5.prototype.dmPopMatrix = function() {
-    if (!this._dmObjects) this.initDrawingManager();
+  p5.prototype.dbPopMatrix = function() {
+    if (!this._dbObjects) this.initDynamicBrushes();
     let p = new PopTransform();
-    this._dmObjects.push(p);
+    this._dbObjects.push(p);
     return this;
   };
 
-  p5.prototype.dmRotate = function(theta) {
-    if (!this._dmObjects) this.initDrawingManager();
+  p5.prototype.dbRotate = function(theta) {
+    if (!this._dbObjects) this.initDynamicBrushes();
     let r = new Rotate(theta);
-    this._dmObjects.push(r);
+    this._dbObjects.push(r);
     return this;
   };
 
-  p5.prototype.dmScale = function(x, y) {
-    if (!this._dmObjects) this.initDrawingManager();
+  p5.prototype.dbScale = function(x, y) {
+    if (!this._dbObjects) this.initDynamicBrushes();
     let s = new Scale(x, y);
-    this._dmObjects.push(s);
+    this._dbObjects.push(s);
     return this;
   };
 
-  p5.prototype.dmTranslate = function(x, y) {
-    if (!this._dmObjects) this.initDrawingManager();
+  p5.prototype.dbTranslate = function(x, y) {
+    if (!this._dbObjects) this.initDynamicBrushes();
     let t = new Translate(x, y);
-    this._dmObjects.push(t);
+    this._dbObjects.push(t);
     return this;
   };
 
-  p5.prototype.dmClear = function() {
-    if (!this._dmObjects) this.initDrawingManager();
-    this._dmObjects = [];
+  p5.prototype.dbClear = function() {
+    if (!this._dbObjects) this.initDynamicBrushes();
+    this._dbObjects = [];
     this.background(255);
     return this;
   };
 
-  p5.prototype.dmSaveSVG = function(filename) {
+  p5.prototype.dbSaveSVG = function(filename) {
     if (typeof this.saveSVG === 'function') {
       let now = new Date();
       let timestamp = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}-${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}`;
@@ -658,9 +658,9 @@
   };
 
   // Version info
-  p5.prototype.dmVersion = function() {
+  p5.prototype.dbVersion = function() {
     return "1.0.0";
   };
 
-  console.log('DrawingManager p5 addon loaded (v1.0.0)');
+  console.log('DynamicBrushes p5 addon loaded (v1.0.0)');
 })();

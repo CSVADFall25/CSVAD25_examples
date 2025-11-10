@@ -1,9 +1,9 @@
 /**
- * DrawingManager p5.js Library
+ * DynamicBrushes p5.js Library
  * A drawing abstraction library for p5.js
  * 
  * This library provides a higher-level drawing interface that records drawing operations
- * and allows for transformations, PDF export, and programmatic manipulation of shapes.
+ * and allows for transformations, SVG export, and programmatic manipulation of shapes.
  * 
  * @version 1.0.0
  * @author Ported from Processing version
@@ -500,7 +500,7 @@ class DShape extends DObj {
   }
 }
 
-class DrawingManager {
+class DynamicBrushes {
   constructor(p) {
     this.p = p;
     this.objects = [];

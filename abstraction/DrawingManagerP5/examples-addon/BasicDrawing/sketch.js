@@ -8,12 +8,12 @@ function setup() {
   background(255);
   
   // Initialize the drawing manager
-  initDrawingManager();
+  initDynamicBrushes();
   
   // Set drawing properties
-  dmStroke(0, 100, 200);
-  dmStrokeWeight(2);
-  dmNoFill();
+  dbStroke(0, 100, 200);
+  dbStrokeWeight(2);
+  dbNoFill();
 }
 
 function draw() {
@@ -22,7 +22,7 @@ function draw() {
 
 function mousePressed() {
   // Start a new shape when mouse is pressed
-  currentShape = dmAddShape();
+  currentShape = dbAddShape();
   currentShape.addVertex(mouseX, mouseY);
 }
 
@@ -41,9 +41,9 @@ function mouseReleased() {
 function keyPressed() {
   if (key === 'c' || key === 'C') {
     // Clear the canvas
-    dmClear();
+    dbClear();
   } else if (key === ' ') {
     // Save as SVG (requires p5.svg library)
-    dmSaveSVG();
+    dbSaveSVG();
   }
 }

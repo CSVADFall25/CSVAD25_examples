@@ -1,11 +1,11 @@
-let drawingManager;
+let dynamicBrushes;
 let shape;
 
 function setup() {
   createCanvas(800, 600);
   background(255);
-  drawingManager = new DrawingManager(window);
-  drawingManager.strokeWeight(3);
+  dynamicBrushes = new DynamicBrushes(window);
+  dynamicBrushes.strokeWeight(3);
 }
 
 function draw() {
@@ -15,18 +15,18 @@ function draw() {
 function keyPressed() {
   // Save SVG when spacebar is pressed
   if (key === ' ') {
-    drawingManager.saveSVG();
+    dynamicBrushes.saveSVG();
   }
   // Clear canvas when 'c' is pressed
   if (key === 'c') {
-    drawingManager.clear();
+    dynamicBrushes.clear();
   }
 }
 
 function mousePressed() {
   // Start a new shape when mouse is pressed
-  shape = drawingManager.addShape();
-  drawingManager.stroke(0, 0, 0);
+  shape = dynamicBrushes.addShape();
+  dynamicBrushes.stroke(0, 0, 0);
 }
 
 function mouseDragged() {

@@ -1,12 +1,12 @@
-let drawingManager;
+let dynamicBrushes;
 let shape;
 let mirrorShape;
 
 function setup() {
   createCanvas(800, 600);
   background(255);
-  drawingManager = new DrawingManager(window);
-  drawingManager.strokeWeight(2);
+  dynamicBrushes = new DynamicBrushes(window);
+  dynamicBrushes.strokeWeight(2);
 }
 
 function draw() {
@@ -16,22 +16,22 @@ function draw() {
 function keyPressed() {
   // Save SVG when spacebar is pressed
   if (key === ' ') {
-    drawingManager.saveSVG();
+    dynamicBrushes.saveSVG();
   }
   // Clear canvas when 'c' is pressed
   if (key === 'c') {
-    drawingManager.clear();
+    dynamicBrushes.clear();
   }
 }
 
 function mousePressed() {
   // Create the main shape
-  drawingManager.stroke(0, 0, 255);
-  shape = drawingManager.addShape();
+  dynamicBrushes.stroke(0, 0, 255);
+  shape = dynamicBrushes.addShape();
   
   // Create a mirrored version
-  drawingManager.stroke(255, 0, 0);
-  mirrorShape = drawingManager.addShape();
+  dynamicBrushes.stroke(255, 0, 0);
+  mirrorShape = dynamicBrushes.addShape();
   
   
   // Set up transformation for mirroring

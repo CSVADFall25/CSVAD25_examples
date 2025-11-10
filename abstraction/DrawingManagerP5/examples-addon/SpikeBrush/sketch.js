@@ -7,7 +7,7 @@ function setup() {
   background(255);
   
   // Initialize DrawingManager addon
-  initDrawingManager();
+  initDynamicBrushes();
 }
 
 function draw() {
@@ -23,27 +23,27 @@ function mouseDragged() {
   let theta = atan2(xDist, yDist);
   
   // Set drawing properties
-  dmStroke(0, 0, 0);
-  dmFill(0, 0, 0);
+  dbStroke(0, 0, 0);
+  dbFill(0, 0, 0);
   
   // Create a spike pointing in the direction of movement
-  dmPushMatrix();
-  dmTranslate(mouseX, mouseY);
-  dmRotate(TWO_PI - theta);
+  dbPushMatrix();
+  dbTranslate(mouseX, mouseY);
+  dbRotate(TWO_PI - theta);
   
   // Draw triangle with random spike length
   let spikeLength = random(10, 100);
-  dmTriangle(-10, 0, 10, 0, 0, spikeLength);
+  dbTriangle(-10, 0, 10, 0, 0, spikeLength);
   
-  dmPopMatrix();
+  dbPopMatrix();
 }
 
 function keyPressed() {
   if (key === ' ') {
     // Save as SVG (requires p5.svg library)
-    dmSaveSVG();
+    dbSaveSVG();
   } else if (key === 'c' || key === 'C') {
     // Clear the canvas
-    dmClear();
+    dbClear();
   }
 }

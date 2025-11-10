@@ -1,4 +1,4 @@
-let drawingManager;
+let dynamicBrushes;
 let shape;
 let distInterval;
 let totalDist = 0;
@@ -8,8 +8,8 @@ let drips = [];
 function setup() {
   createCanvas(1056, 816);
   background(255);
-  drawingManager = new DrawingManager(window);
-  drawingManager.strokeWeight(5);
+  dynamicBrushes = new DynamicBrushes(window);
+  dynamicBrushes.strokeWeight(5);
   distInterval = random(10, 100);
 }
 
@@ -34,11 +34,11 @@ function draw() {
 function keyPressed() {
   // Save SVG when spacebar is pressed
   if (key === ' ') {
-    drawingManager.saveSVG();
+    dynamicBrushes.saveSVG();
   }
   // Clear canvas when 'c' is pressed
   if (key === 'c') {
-    drawingManager.clear();
+    dynamicBrushes.clear();
   }
   // Stop drips when 's' is pressed
   if (key === 's') {
@@ -48,11 +48,11 @@ function keyPressed() {
 
 function mousePressed() {
   totalDist = 0;
-  shape = drawingManager.addShape();
+  shape = dynamicBrushes.addShape();
 }
 
 function mouseDragged() {
-  drawingManager.stroke(0, 0, 0);
+  dynamicBrushes.stroke(0, 0, 0);
   shape.addVertex(mouseX, mouseY);
   
   let v = createVector(mouseX - pmouseX, mouseY - pmouseY);
@@ -68,7 +68,7 @@ function mouseDragged() {
     // Create a new DShape object for the new drip
     // Add a vertex at the current mouse position
     // Add it to the drip array list
-    let drip = drawingManager.addShape();
+    let drip = dynamicBrushes.addShape();
     drip.addVertex(mouseX, mouseY);
     drips.push(drip);
   }
