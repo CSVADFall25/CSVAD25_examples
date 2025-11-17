@@ -36,8 +36,8 @@ function mousePressed() {
   
   // Set up transformation for mirroring
   mirrorShape.pushMatrix();
-  mirrorShape.translate(width, 0);
-  mirrorShape.scale(-1, 1);
+  mirrorShape.translate(0, height);
+  mirrorShape.scale(1, -1);
 }
 
 function mouseDragged() {

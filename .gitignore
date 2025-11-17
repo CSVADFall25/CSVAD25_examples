@@ -151,3 +151,6 @@ out/
 # Temporary files
 tmp/
 temp/
+
+# Gemini API key file
+config.py
